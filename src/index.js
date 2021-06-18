@@ -20,6 +20,7 @@ function* rootSaga() {
 function* fetchAllMovies() {
     // get all movies from the DB
     try {
+        //GET request to Movie Router
         const movies = yield axios.get('/api/movie');
         //Console log the array of objects w/ movies inside of it
         console.log('get all:', movies.data);

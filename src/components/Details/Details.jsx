@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Details() {
+export default function Details({movie}) {
     return (
         <div>
-            Movie DEETS GO HERE
+            {/* <p>{movie.description}</p> */}
+            MOVIE STUFF
         </div>
     )
 }

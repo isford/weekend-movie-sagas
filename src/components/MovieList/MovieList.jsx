@@ -16,20 +16,22 @@ function MovieList() {
     }, []);
 
     const goToDetails = () =>{
+        //event.preventDefault();
         console.log('Movie was clicked')
-        history.push('/Details');
+        // history.push(`/Details/${movie.id}`);
+        history.push(`/Details`);
     }
 
     return (
         <main>
             <h1>MovieList</h1>
             <section className="movies">
-                {/* This maps through the movies array appending them to the DOM */}
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img onClick={goToDetails} src={movie.poster} alt={movie.title}/>
+                            {/* <Details movie={movie} /> */}
                         </div>
                     );
                 })}

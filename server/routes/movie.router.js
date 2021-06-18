@@ -2,11 +2,14 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+
+//Get request from fetchAllMovies generator
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
     .then( result => {
+      // sends back movies from DB
       res.send(result.rows);
     })
     .catch(err => {
