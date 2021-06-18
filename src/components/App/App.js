@@ -14,7 +14,7 @@ function App() {
       <Router>
 
         <Header />
-
+        {/* Displays list of movies on DOM */}
         <Route path="/" exact>
           <MovieList />
         </Route>

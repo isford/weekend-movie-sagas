@@ -7,9 +7,11 @@ function MovieList() {
     const history = useHistory();
 
     const dispatch = useDispatch();
+    //This calls the movie reducer to show movies saved locally
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
+        //on page load sends dispatch of fetch movies to index
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
@@ -22,6 +24,7 @@ function MovieList() {
         <main>
             <h1>MovieList</h1>
             <section className="movies">
+                {/* This maps through the movies array appending them to the DOM */}
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >
