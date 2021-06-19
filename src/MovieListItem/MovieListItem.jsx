@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function MovieListItem() {
+export default function MovieListItem({movie}) {
     return (
         <div>
             

@@ -20,6 +20,8 @@ function MovieList() {
         console.log('Movie was clicked')
         // history.push(`/Details/${movie.id}`);
         history.push(`/Details`);
+        // dispatch({type: 'SET_MOVIE_DETAIL',
+        //         payload: movie})
     }
 
     return (
@@ -30,8 +32,9 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img onClick={goToDetails} src={movie.poster} alt={movie.title}/>
-                            {/* <Details movie={movie} /> */}
+                            <img onClick={goToDetails} src={movie.poster} alt={movie.title} movie = {movie}/>
+                            {/* <h6>{movie.description}</h6> */}
+                            {/* <Details movie={movie} key={movie.id} /> */}
                         </div>
                     );
                 })}

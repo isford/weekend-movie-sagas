@@ -46,6 +46,12 @@ const movies = (state = [], action) => {
     }
 }
 
+const movieDetails = (state = {}, action) => {
+    if(action.type === 'SET_MOVIE_DETAIL')
+    state = action.payload;
+    return state;
+}
+
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
