@@ -7,6 +7,7 @@ export default function AddMovieForm() {
     const genres = useSelector(store => store.genres)
     const history = useHistory();
     const dispatch = useDispatch();
+    
     const [genreToAdd, setGenreToAdd] = useState(0);
     const [title, setTitle] = useState('');
     const [poster, setPoster] = useState('');
@@ -31,11 +32,10 @@ export default function AddMovieForm() {
     }
 
     const saveMovie =() => {
-        console.log('Save button clicked!')
-        dispatch({type: 'ADD_MOVIE', payload: movieToAdd})
-        console.log('The selected Genre was',genreToAdd)
-        //dispatch({type: 'ADD_GENRE', payload: genreToAdd})
-
+        console.log('Save button clicked!');
+        dispatch({type: 'ADD_MOVIE', payload: movieToAdd});
+        console.log('The selected Genre was',genreToAdd);
+        history.push('/');
         //Need to post data to DB and then navigate back to home
     }
 
@@ -60,14 +60,6 @@ export default function AddMovieForm() {
                 </select>
 
             </form>
-            <h2>TEST DATA</h2>
-            <p>TITLE:The Lord of the Rings: The Fellowship of the Ring</p>
-            <p>POSTER: https://images-na.ssl-images-amazon.com/images/I/81EBp0vOZZL._AC_SL1329_.jpg</p>
-            <p>DESCRIPTION: A meek Hobbit from the Shire
-                and eight companions set out on a
-                journey to destroy the powerful One Ring
-                and save Middle-earth from the Dark Lord Sauron.</p>
-
             <button onClick={goHome} >Cancel</button>
             <button onClick={saveMovie}>Save</button>
         </div>

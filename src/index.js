@@ -18,32 +18,44 @@ function* rootSaga() {
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
     yield takeEvery('ADD_MOVIE', addMovie);
     //yield takeEvery('ADD_GENRE', addGenre);
+    yield takeEvery('GET_ONE_MOVIE', getMovie)
+}
+
+function* getMovie(action) {
+    try {
+        //Getting a specific movie now
+       const movieId = yield axios.get(`/api/genre/details/${action.payload.id}`);
+       console.log('The movie id is', movieId.data)
+       yield put ({type:'SET_GENRES', payload: movieId.data});
+    }catch{
+        console.log('Error in getMovie generator')
+    }
 }
 
 function* addMovie(action) {
     //payload coming from addMovieForm
     let movie = action.payload;
     console.log('Movie in addMovie generator is', movie)
-    try{
+    try {
         //POST movie to DB
-        yield axios.post ('/api/movie', movie)
+        yield axios.post('/api/movie', movie)
         //UPDATE reducer to current w/ DB
-        yield put({type:'FETCH_MOVIES'})
-    }catch(error){
+        yield put({ type: 'FETCH_MOVIES' })
+    } catch (error) {
         console.log('Error in addMovieGenerator', error)
     }
 }
 
-function* addGenre(action){
-    let genre = action.payload;
-    console.log('Genre in addGenre generator is', genre);
-    try{
-        yield axios.post ('/api/genre', {genre});
-        yield put({type:'FETCH_GENRES'})
-    }catch(error){
-        console.log('Error in addGenre generator', error)
-    }
-}
+// function* addGenre(action){
+//     let genre = action.payload;
+//     console.log('Genre in addGenre generator is', genre);
+//     try{
+//         yield axios.post ('/api/genre', {genre});
+//         yield put({type:'FETCH_GENRES'})
+//     }catch(error){
+//         console.log('Error in addGenre generator', error)
+//     }
+// }
 
 function* fetchAllMovies() {
     // get all movies from the DB
@@ -58,15 +70,15 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all movies error');
     }
-        
+
 }
 
 function* fetchAllGenres() {
-    try{
+    try {
         const genres = yield axios.get('/api/genre');
         console.log('get all genres:', genres.data);
-        yield put({type: 'SET_GENRES', payload: genres.data})
-    }catch{
+        yield put({ type: 'SET_GENRES', payload: genres.data })
+    } catch {
         console.log('Get all Genres error')
     }
 }
@@ -80,6 +92,15 @@ const movies = (state = [], action) => {
         case 'SET_MOVIES':
             return action.payload;
         default:
+            return state;
+    }
+}
+
+const details = (state = {}, action) => {
+    switch(action.type){
+        case 'SET_DETAILS' :
+            return action.payload
+        default :
             return state;
     }
 }
@@ -110,7 +131,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

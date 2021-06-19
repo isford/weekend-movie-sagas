@@ -15,13 +15,21 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    const goToDetails = () =>{
-        //event.preventDefault();
-        console.log('Movie was clicked')
-        // history.push(`/Details/${movie.id}`);
+    // const goToDetails = (movie) =>{
+    //     //event.preventDefault();
+    //     console.log('Movie was clicked')
+    //     // history.push(`/Details/${movie.id}`);
+    //     history.push(`/Details`);
+    //     //console.log('The select movie was', movie);
+    // }
+
+    const captureDetails= (movie) =>{
+        //dispatch({type:'SET_MOVIE', payload: movie.id})
+        console.log('The selected movie was', movie)
+        
+        dispatch({type: 'GET_ONE_MOVIE', payload: movie.id})
+        dispatch({type:'SET_DETAILS', payload: movie})
         history.push(`/Details`);
-        // dispatch({type: 'SET_MOVIE_DETAIL',
-        //         payload: movie})
     }
 
     return (
@@ -32,9 +40,8 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img onClick={goToDetails} src={movie.poster} alt={movie.title} movie = {movie}/>
-                            {/* <h6>{movie.description}</h6> */}
-                            {/* <Details movie={movie} key={movie.id} /> */}
+                            <img onClick={ () => captureDetails(movie)} src={movie.poster} 
+                            alt={movie.title} movie = {movie}/>
                         </div>
                     );
                 })}

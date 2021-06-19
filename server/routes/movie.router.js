@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
 
 });
 
+//POST new movie to DB
 router.post('/', (req, res) => {
   console.log('Item to add in Router post is',req.body);
   // RETURNING "id" will give us back the id of the created movie
@@ -55,5 +56,7 @@ router.post('/', (req, res) => {
     res.sendStatus(500)
   })
 })
+
+
 
 module.exports = router;
