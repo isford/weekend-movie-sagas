@@ -7,7 +7,10 @@ export default function AddMovieForm() {
     const genres = useSelector(store => store.genres)
     const history = useHistory();
     const dispatch = useDispatch();
-    const [genre, setGenre] = useState('');
+    const [genreToAdd, setGenreToAdd] = useState('');
+    const [title, setTitle] = useState('');
+    const [poster, setPoster] = useState('');
+    const [description, setDescription] = useState('');
 
     useEffect(() => {
         dispatch({ type: 'FETCH_GENRES' })
@@ -19,14 +22,34 @@ export default function AddMovieForm() {
         history.push('/')
         //Clear input values on cancel and submit
     }
+    
+    const movieToAdd = {
+        title: title,
+        poster: poster,
+        description: description
+    }
+
+    const saveMovie =() => {
+        console.log('Save button clicked!')
+        dispatch({type: 'ADD_MOVIE', payload: movieToAdd}),
+        dispatch({type: 'ADD_GENRE', payload: genreToAdd})
+
+        //Need to post data to DB and then navigate back to home
+    }
 
     return (
         <div>
             <form>
-                <input type="text" placeholder="Movie Title"></input>
-                <input type="text" placeholder="Movie Poster URL"></input>
-                <input type="text" placeholder="Movie Description"></input>
-                <select name="genres" value={genre} onChange={(event) => setGenre(event.target.value)}>
+                <input type="text" placeholder="Movie Title"
+                 onChange={(event) => setTitle(event.target.value)}></input>
+
+                <input type="text" placeholder="Movie Poster URL"
+                 onChange={(event) => setPoster(event.target.value)}></input>
+
+                <input type="text" placeholder="Movie Description"
+                 onChange={(event) => setDescription(event.target.value)}></input>
+
+                <select name="genres" value={genreToAdd} onChange={(event) => setGenreToAdd(event.target.value)}>
                     {genres.map(genre => {
                         return (
                             <option key={genre.id}>{genre.name}</option>
@@ -44,7 +67,7 @@ export default function AddMovieForm() {
                 and save Middle-earth from the Dark Lord Sauron.</p>
 
             <button onClick={goHome} >Cancel</button>
-            <button>Save</button>
+            <button onClick={saveMovie}>Save</button>
         </div>
     )
 }

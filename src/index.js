@@ -16,6 +16,33 @@ function* rootSaga() {
     //FETCH movies received on page load from MovieList and runs fetchAllMovies
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
+    yield takeEvery('ADD_MOVIE', addMovie);
+    yield takeEvery('ADD_GENRE', addGenre);
+}
+
+function* addMovie(action) {
+    //payload coming from addMovieForm
+    let movie = action.payload;
+    console.log('Movie in addMovie generator is', movie)
+    try{
+        //POST movie to DB
+        yield axios.post ('/api/movie', {movie})
+        //UPDATE reducer to current w/ DB
+        yield put({type:'FETCH_MOVIES'})
+    }catch(error){
+        console.log('Error in addMovieGenerator', error)
+    }
+}
+
+function* addGenre(action){
+    let genre = action.payload;
+    console.log('Genre in addGenre generator is', genre);
+    try{
+        yield axios.post ('/api/genre', {genre});
+        yield put({type:'FETCH_GENRES'})
+    }catch(error){
+        console.log('Error in addGenre generator', error)
+    }
 }
 
 function* fetchAllMovies() {
