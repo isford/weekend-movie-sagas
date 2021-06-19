@@ -26,9 +26,9 @@ function MovieList() {
     const captureDetails= (movie) =>{
         //dispatch({type:'SET_MOVIE', payload: movie.id})
         console.log('The selected movie was', movie)
+        dispatch({ type: 'SET_DETAILS', payload: movie })
+        dispatch({type: 'GET_ONE_MOVIE', payload: {id: movie.id}})
         
-        dispatch({type: 'GET_ONE_MOVIE', payload: movie.id})
-        dispatch({type:'SET_DETAILS', payload: movie})
         history.push(`/Details`);
     }
 

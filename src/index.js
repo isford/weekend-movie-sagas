@@ -19,10 +19,12 @@ function* rootSaga() {
     yield takeEvery('ADD_MOVIE', addMovie);
     //yield takeEvery('ADD_GENRE', addGenre);
     yield takeEvery('GET_ONE_MOVIE', getMovie)
+    //yield takeEvery('SET_DETAILS', details)
 }
 
 function* getMovie(action) {
     try {
+        console.log('DA MOVIES IS', action.payload.id)
         //Getting a specific movie now
        const movieId = yield axios.get(`/api/genre/details/${action.payload.id}`);
        console.log('The movie id is', movieId.data)
@@ -110,6 +112,8 @@ const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
             return action.payload;
+        case 'SET_ALL_GENRES':
+            return action.payload;
         default:
             return state;
     }
@@ -120,6 +124,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        details
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
