@@ -17,7 +17,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
     yield takeEvery('ADD_MOVIE', addMovie);
-    yield takeEvery('ADD_GENRE', addGenre);
+    //yield takeEvery('ADD_GENRE', addGenre);
 }
 
 function* addMovie(action) {
@@ -26,7 +26,7 @@ function* addMovie(action) {
     console.log('Movie in addMovie generator is', movie)
     try{
         //POST movie to DB
-        yield axios.post ('/api/movie', {movie})
+        yield axios.post ('/api/movie', movie)
         //UPDATE reducer to current w/ DB
         yield put({type:'FETCH_MOVIES'})
     }catch(error){

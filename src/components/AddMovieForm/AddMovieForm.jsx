@@ -7,7 +7,7 @@ export default function AddMovieForm() {
     const genres = useSelector(store => store.genres)
     const history = useHistory();
     const dispatch = useDispatch();
-    const [genreToAdd, setGenreToAdd] = useState('');
+    const [genreToAdd, setGenreToAdd] = useState(0);
     const [title, setTitle] = useState('');
     const [poster, setPoster] = useState('');
     const [description, setDescription] = useState('');
@@ -26,13 +26,15 @@ export default function AddMovieForm() {
     const movieToAdd = {
         title: title,
         poster: poster,
-        description: description
+        description: description,
+        genre_id: Number(genreToAdd)
     }
 
     const saveMovie =() => {
         console.log('Save button clicked!')
-        dispatch({type: 'ADD_MOVIE', payload: movieToAdd}),
-        dispatch({type: 'ADD_GENRE', payload: genreToAdd})
+        dispatch({type: 'ADD_MOVIE', payload: movieToAdd})
+        console.log('The selected Genre was',genreToAdd)
+        //dispatch({type: 'ADD_GENRE', payload: genreToAdd})
 
         //Need to post data to DB and then navigate back to home
     }
@@ -52,7 +54,7 @@ export default function AddMovieForm() {
                 <select name="genres" value={genreToAdd} onChange={(event) => setGenreToAdd(event.target.value)}>
                     {genres.map(genre => {
                         return (
-                            <option key={genre.id}>{genre.name}</option>
+                            <option key={genre.id} value = {genre.id}>{genre.name}</option>
                         )
                     })}
                 </select>
