@@ -15,20 +15,14 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    // const goToDetails = (movie) =>{
-    //     //event.preventDefault();
-    //     console.log('Movie was clicked')
-    //     // history.push(`/Details/${movie.id}`);
-    //     history.push(`/Details`);
-    //     //console.log('The select movie was', movie);
-    // }
-
+    
     const captureDetails= (movie) =>{
-        //dispatch({type:'SET_MOVIE', payload: movie.id})
         console.log('The selected movie was', movie)
+        //collects info from movie and stores locally
         dispatch({ type: 'SET_DETAILS', payload: movie })
+        //gets genre info from DB
         dispatch({type: 'GET_ONE_MOVIE', payload: {id: movie.id}})
-        
+        //navigates to details page
         history.push(`/Details`);
     }
 
@@ -36,6 +30,7 @@ function MovieList() {
         <main>
             <h1>MovieList</h1>
             <section className="movies">
+            {/* maps through reducer to display movies on DOM */}
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >

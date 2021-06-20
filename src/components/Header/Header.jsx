@@ -16,7 +16,6 @@ const goHome=()=>{
 
     return (
         <div>
-            NAV BAR HERE
             <button onClick={goHome}>Home</button>
             <button onClick={goToNewMovie}>Add a Movie</button>
         </div>

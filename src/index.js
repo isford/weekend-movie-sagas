@@ -15,25 +15,29 @@ import axios from 'axios';
 function* rootSaga() {
     //FETCH movies received on page load from MovieList and runs fetchAllMovies
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    //Gets all genres from DB, and displays in dropdown
+    //for selection
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
+    //POST new movie to DB
     yield takeEvery('ADD_MOVIE', addMovie);
-    //yield takeEvery('ADD_GENRE', addGenre);
+    //gets genre info from DB
     yield takeEvery('GET_ONE_MOVIE', getMovie)
-    //yield takeEvery('SET_DETAILS', details)
+    
 }
-
+//generator to GET genre info from DB
 function* getMovie(action) {
     try {
         console.log('DA MOVIES IS', action.payload.id)
-        //Getting a specific movie now
+        //Getting a specific movies genres
        const movieId = yield axios.get(`/api/genre/details/${action.payload.id}`);
        console.log('The movie id is', movieId.data)
+       //Sets genres in a local array for access on details page
        yield put ({type:'SET_GENRES', payload: movieId.data});
     }catch{
         console.log('Error in getMovie generator')
     }
 }
-
+//generator to to add movie to DB
 function* addMovie(action) {
     //payload coming from addMovieForm
     let movie = action.payload;
@@ -47,18 +51,7 @@ function* addMovie(action) {
         console.log('Error in addMovieGenerator', error)
     }
 }
-
-// function* addGenre(action){
-//     let genre = action.payload;
-//     console.log('Genre in addGenre generator is', genre);
-//     try{
-//         yield axios.post ('/api/genre', {genre});
-//         yield put({type:'FETCH_GENRES'})
-//     }catch(error){
-//         console.log('Error in addGenre generator', error)
-//     }
-// }
-
+//generator to get all movies from DB
 function* fetchAllMovies() {
     // get all movies from the DB
     try {
@@ -74,7 +67,7 @@ function* fetchAllMovies() {
     }
 
 }
-
+//generator to get all genres from DB
 function* fetchAllGenres() {
     try {
         const genres = yield axios.get('/api/genre');
@@ -98,6 +91,8 @@ const movies = (state = [], action) => {
     }
 }
 
+//Stores movie data from DOM in a local object to render when
+//viewing details
 const details = (state = {}, action) => {
     switch(action.type){
         case 'SET_DETAILS' :
