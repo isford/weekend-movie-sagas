@@ -1,34 +1,57 @@
 import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 import '@fontsource/roboto';
+import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
-import MovieList from '../MovieList/MovieList'
 import Header from '../Header/Header';
-import Details from '../Details/Details';
-import AddMovieForm from '../AddMovieForm/AddMovieForm';
+import Home from '../Home/Home';
+import RescueStack from '../RescueStack/RescueStack';
+import Offers from '../Offers/Offers';
+import Testimonials from '../Testimonials/Testimonials';
+import Promise from '../Promise/Promise';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#009688'
+    },
+    secondary: {
+      main: '#78909c'
+    }
+  }
+})
 
 function App() {
   return (
+    <ThemeProvider theme={theme}>
     <div className="App">
-      <h1>The Movies Saga!</h1>
+      {/* <h1>Trick or Cheat</h1> */}
       <Router>
-
+        {/* Buttons for navigation */}
         <Header />
-        {/* Displays list of movies on DOM */}
+        {/* Displays Candy Facts */}
         <Route path="/" exact>
-          <MovieList />
+          <Home />
         </Route>
-        
-        {/* Details page */}
-        <Route path="/Details">
-          <Details />
+        {/* Displays What the Stack Is */}
+        <Route path="/RescueStack">
+          <RescueStack />
         </Route>
-        {/* Add Movie page */}
-        <Route path="/AddMovieForm">
-          <AddMovieForm/>
+        {/* Shows Current Offers */}
+        <Route path="/Offers">
+          <Offers/>
         </Route>
+        {/* Shows User Reviews */}
+          <Route path="/Testimonials">
+            <Testimonials />
+          </Route>
+        {/* Satisfaction Guarantee */}
+          <Route path="/Promise">
+            <Promise />
+          </Route>
       </Router>
     </div>
+    </ThemeProvider>
   );
 }
 
