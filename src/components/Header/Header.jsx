@@ -24,11 +24,11 @@ const goToPromise = () => {
 }
     return (
         <div>
-            <Button onClick={goHome}>Home</Button>
-            <Button onClick={goToRescueStack}>Rescue Stack</Button>
-            <Button onClick={goToOffers}>Offers</Button>
-            <Button onClick={goToTestimonials}>Testimonials</Button>
-            <Button onClick={goToPromise}>Promise</Button>
+            <Button color="primary"variant = "outlined" onClick={goHome}>Home</Button>
+            <Button color="primary" variant="outlined" onClick={goToRescueStack}>Rescue Stack</Button>
+            <Button color="primary" variant="outlined" onClick={goToOffers}>Offers</Button>
+            <Button color="primary" variant="outlined" onClick={goToTestimonials}>Testimonials</Button>
+            <Button color="primary" variant="outlined" onClick={goToPromise}>Promise</Button>
         </div>
     )
 }

@@ -1,8 +1,10 @@
 import React from 'react'
+import { Button, Container } from '@material-ui/core';
 
 export default function Testimonials() {
     return (
         <div>
+            <Container>
             <h1>
                 Testimonials (taken from Amazon)
             </h1>
@@ -62,6 +64,7 @@ export default function Testimonials() {
                 stomach. I believe it aids with 
                 digestion.
             </p>
+            </Container>
         </div>
     )
 }

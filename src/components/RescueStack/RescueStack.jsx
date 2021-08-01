@@ -1,8 +1,12 @@
 import React from 'react'
+import { Button, Container } from '@material-ui/core';
+
 
 export default function RescueStack() {
     return (
+        
         <div>
+            <Container>
             <h1>The Halloween Rescue Stack</h1>
             <p>This is the awesome new stack we’ve
                 created and discounted in honor of
@@ -54,7 +58,7 @@ export default function RescueStack() {
                 it so you can power through the most
                 hard-to-digest foods.
             </p>
-
+            </Container>
         </div>
     )
 }

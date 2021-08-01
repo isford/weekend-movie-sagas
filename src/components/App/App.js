@@ -1,7 +1,7 @@
 import {HashRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 import '@fontsource/roboto';
-import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Header from '../Header/Header';
 import Home from '../Home/Home';
@@ -13,20 +13,30 @@ import Promise from '../Promise/Promise';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#009688'
+      main: '#f57c00',
     },
     secondary: {
-      main: '#78909c'
-    }
-  }
-})
+      main: '#8e24aa',
+    },
+  },
+  typography: {
+    fontFamily: [
+      'Palatino',
+      'Georgia',
+      'Times New Roman',
+      'Times',
+      'serif',
+    ].join(','),
+  },
+});
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    
     <div className="App">
       {/* <h1>Trick or Cheat</h1> */}
       <Router>
+        <ThemeProvider theme={theme}>
         {/* Buttons for navigation */}
         <Header />
         {/* Displays Candy Facts */}
@@ -49,9 +59,9 @@ function App() {
           <Route path="/Promise">
             <Promise />
           </Route>
+        </ThemeProvider>
       </Router>
     </div>
-    </ThemeProvider>
   );
 }
 

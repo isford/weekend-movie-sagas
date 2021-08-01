@@ -1,8 +1,10 @@
 import React from 'react'
+import { Button, Container } from '@material-ui/core';
 
 export default function Promise() {
     return (
         <div>
+            <Container>
             <h1>Your order is protected by our 1 year 
                 (365 day) full money back 
                 guarantee.
@@ -17,6 +19,7 @@ export default function Promise() {
                    happiness team will take complete 
                    care of it.
                 </p>
+            </Container>
         </div>
     )
 }

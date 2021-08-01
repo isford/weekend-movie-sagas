@@ -1,21 +1,24 @@
 import React from 'react'
+import { Button, Container } from '@material-ui/core';
 
 export default function Offers() {
     return (
         <div>
+            <Container>
             <h1>
                 The Halloween Rescue Stack (Offers)
             </h1>
             <h3>Offer #1:  Three Month Supply of
                 Our Halloween Rescue Stack
             </h3>
+            
             <h4>
                 6 Masszymes
                 6 P3-OM
                 6 HCL for FREE
                 SAVE 40% - Pay Just $287
             </h4>
-
+            <Button>Select Offer 1</Button>
             <h3>Offer #2: One Month Supply of
                 Our Halloween Rescue Stack
             </h3>
@@ -26,6 +29,7 @@ export default function Offers() {
                 Save 30% - Pay Just $167
 
             </h4>
+            <Button>Select Offer 2</Button>
             <h3>Offer #3: Test-It-Out Version
                 Single Units Bundle
             </h3>
@@ -34,6 +38,8 @@ export default function Offers() {
                 1 HCL for FREE
                 Save 20% - Pay Just $63
             </h4>
+            <Button>Select Offer 3</Button>
+            </Container>
         </div>
     )
 }
