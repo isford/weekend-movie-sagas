@@ -1,4 +1,7 @@
 import React from 'react'
+import { useHistory } from 'react-router';
+
+
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -11,6 +14,7 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import {Button} from '@material-ui/core';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
@@ -44,10 +48,14 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    const history = useHistory();
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    const handlePush = () => {
+        history.push('/Rescuestack')
+    }
 
     return (
         <div>
@@ -83,13 +91,13 @@ export default function Home() {
                         <CardHeader
                             title="Turn Sugary Toxins Into
                     Super Nutrients"
-                            subheader="Learn about P3-OM"
+                            
                         />
                         <CardMedia
-                            square
-                            className={classes.media}
-                            imageUrl= "https://www.dropbox.com/sh/ize8vkw71hok350/AAAnojrq5MmHmlxL-97pPmZya?dl=0&preview=P3-OM+US+120-FRONT.6.png"
-                            title="Paella dish"
+                            component = "img"
+                            //className={classes.media}
+                            image= "https://i.imgur.com/5wNpzwy.jpg"
+                            title="Sugar"
                         />
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
@@ -145,12 +153,11 @@ export default function Home() {
                         <CardHeader
                             title="Milk Protein Is Another
                                     Big Halloween Hurdle"
-                            subheader="Milk Chocolate And Its' Effect On The Gut"
                         />
                         <CardMedia
-                            className={classes.media}
-                            image="/static/images/cards/paella.jpg"
-                            title="Paella dish"
+                            component="img"
+                            image="https://i.imgur.com/uYw42dA.png"
+                            title="Chocolate"
                         />
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
@@ -189,6 +196,9 @@ export default function Home() {
                                     have less inflammation and less
                                     negative gut-related issues.
                                 </Typography>
+                                <Typography paragraph>
+                                    Use Masszymes to break down these proteins more efficiently.
+                                </Typography>
                             </CardContent>
                         </Collapse>
                     </Card>
@@ -198,12 +208,11 @@ export default function Home() {
                         <CardHeader
                             title="Halloween
                                     Candies Are Not Easy to Digest"
-                            subheader="Turbocharge Your Digestion"
                         />
                         <CardMedia
-                            className={classes.media}
-                            image="/static/images/cards/paella.jpg"
-                            title="Paella dish"
+                            component = "img"
+                            image="https://i.imgur.com/XQCH5V6.jpg"
+                            title="Candy"
                         />
                         <CardContent>
                             <Typography variant="body2" color="textSecondary" component="p">
@@ -260,6 +269,10 @@ export default function Home() {
                     </Card>
                     {/* END MUI Card Digestion */}
                 </Grid>
+                <Button 
+                variant= "contained" 
+                color="secondary"
+                onClick = {handlePush}>Learn What You Can Do To Prevent These Side Affects</Button>
             </Container>
         </div>
     )

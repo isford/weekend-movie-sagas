@@ -13,10 +13,10 @@ import Promise from '../Promise/Promise';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#f57c00',
+      main: '#9CC700',
     },
     secondary: {
-      main: '#8e24aa',
+      main: '#252525',
     },
   },
   typography: {
@@ -34,7 +34,7 @@ function App() {
   return (
     
     <div className="App">
-      {/* <h1>Trick or Cheat</h1> */}
+      <img className="RescueStackImg" src="https://i.imgur.com/86Dcd9t.png" />
       <Router>
         <ThemeProvider theme={theme}>
         {/* Buttons for navigation */}

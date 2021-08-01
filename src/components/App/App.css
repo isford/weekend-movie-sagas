@@ -23,7 +23,7 @@
   to { transform: rotate(360deg); }
 }
 
-body{
+/* body{
   background-image: url("https://i.imgur.com/ZOVSEUe.jpg");
   padding: 0em;
   width: auto;
@@ -32,26 +32,31 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
+} */
 
 h1{
   padding: 20px;
-  color:rgba(255, 204, 0);
+  color:#252525;
 }
 h2{
   padding: 10px;
-  color:blueviolet;
+  color:#9CC700;
 }
 h3{
   padding: 10px;
-  color:orange;
+  color:#FE9400;
 }
 h4{
   padding: 10px;
-  color:orange;
+  color:black;
 }
 p{
   padding: 10px;
   color:black;
+  margin-left: 17em;
+  margin-right: 17em;
+}
+.RescueStackImg{
+  height: 400px;
 }
 

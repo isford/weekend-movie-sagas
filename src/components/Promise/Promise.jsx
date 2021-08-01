@@ -9,8 +9,10 @@ export default function Promise() {
                 (365 day) full money back 
                 guarantee.
                 </h1>
+                <img className="RescueStackImg" src="https://i.imgur.com/CMX5spA.png" />
+
                 <p>
-                   If a client is not happy with any 
+                   If you are not happy with any 
                    BiOptimizers products for any 
                    reason anytime between today and 
                    365 days from now, we'll refund 
