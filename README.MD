@@ -16,6 +16,7 @@ This app was built to show the benefits of P3-OM, Masszymes, and HCL Breakthroug
 
 ## Screen Shot
 
+<img width="1396" alt="Screen Shot 2021-08-02 at 8 41 37 AM" src="https://user-images.githubusercontent.com/78660416/127871389-44368205-8a2e-4c9f-915e-420f408896fd.png">
 
 
 ### Prerequisites
