@@ -3,7 +3,7 @@ import { Button, Container } from '@material-ui/core';
 import { useHistory } from 'react-router';
 
 
-
+//Page displays info relating to Rescue Stack
 export default function RescueStack() {
     const history = useHistory();
     //Sends user to offers page

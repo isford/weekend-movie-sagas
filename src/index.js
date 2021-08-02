@@ -11,6 +11,9 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
+
+// ATTENTION BioOptmizer< THIS IS OLD CODE FROM OLD PROJECT
+
 // Create the rootSaga generator function
 function* rootSaga() {
     //FETCH movies received on page load from MovieList and runs fetchAllMovies

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 
-
+//Mui styling imports
 import Container from "@material-ui/core/Container";
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -15,11 +15,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import {Button} from '@material-ui/core';
-
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
 import { Grid } from '@material-ui/core';
 
+//MUI Style
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
@@ -47,12 +46,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
     const history = useHistory();
 
+    //controls state expansion of cards
+    const [expanded, setExpanded] = React.useState(false);
+    //Handles expansion
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    //Pushes user to rescue stack page
     const handlePush = () => {
         history.push('/Rescuestack')
     }
@@ -66,10 +68,6 @@ export default function Home() {
                     Want on Halloween
                     (and Get Away with It)
                 </h2>
-                <h3>
-                    HOLIDAY SPECIAL: Save up to 40% on your bundle
-                    ON THIS PAGE ONLY
-                </h3>
                 <p>
                     Halloween may not seem as “heavy” as
                     other holidays when it comes to food...

@@ -4,21 +4,24 @@ import {Button} from '@material-ui/core';
 
 export default function Header() {
 const history = useHistory();
-
+//Pushes user to stack
 const goToRescueStack=()=>{
     history.push('/RescueStack')
 }
+//Pushes user home
 const goHome=()=>{
     console.log('Home button clicked')
     history.push('/')
 }
-
+//Pushes user to offers
 const goToOffers = () => {
     history.push('/offers')
 }
+//Pushes user to reviews
 const goToTestimonials = () =>{
     history.push('/testimonials')
 }
+//Pushes user to promises
 const goToPromise = () => {
     history.push('/promise')
 }

@@ -10,6 +10,7 @@ import Offers from '../Offers/Offers';
 import Testimonials from '../Testimonials/Testimonials';
 import Promise from '../Promise/Promise';
 
+//MUI Styling Theme
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -34,6 +35,7 @@ function App() {
   return (
     
     <div className="App">
+      {/* Main Logo */}
       <img className="RescueStackImg" src="https://i.imgur.com/86Dcd9t.png" />
       <Router>
         <ThemeProvider theme={theme}>
